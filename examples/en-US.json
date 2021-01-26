@@ -1,0 +1,736 @@
+{
+	"interactionModel": {
+		"languageModel": {
+			"invocationName": "kitchen plus",
+			"modelConfiguration": {
+				"fallbackIntentSensitivity": {
+					"level": "LOW"
+				}
+			},
+			"intents": [
+				{
+					"name": "AMAZON.CancelIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.HelpIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.StopIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.FallbackIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.NavigateHomeIntent",
+					"samples": []
+				},
+				{
+					"name": "SetTemperatureIntent",
+					"slots": [
+						{
+							"name": "temperature",
+							"type": "AMAZON.NUMBER",
+							"samples": [
+								"set it to {temperature}",
+								"{temperature} degrees",
+								"{temperature}"
+							]
+						}
+					],
+					"samples": [
+						"set temperature to {temperature}",
+						"set temperature to {temperature} degrees"
+					]
+				},
+				{
+					"name": "TurnOnIntent",
+					"slots": [],
+					"samples": [
+						"Switch on the airfryer",
+						"Switch on the air fryer",
+						"Turn the air fryer on",
+						"Turn the airfryer on",
+						"Power on my air fryer",
+						"Power on my airfryer",
+						"Turn on my air fryer",
+						"Turn on my airfryer",
+						"Turn on air fryer",
+						"Turn on airfryer"
+					]
+				},
+				{
+					"name": "TurnOnAndSetAirfryerTemperatureIntent",
+					"slots": [
+						{
+							"name": "temperature",
+							"type": "AMAZON.NUMBER"
+						}
+					],
+					"samples": []
+				},
+				{
+					"name": "TurnOffIntent",
+					"slots": [],
+					"samples": [
+						"Switch off the airfryer",
+						"Switch off the air fryer",
+						"Turn the air fryer off",
+						"Turn the airfryer off",
+						"Power off my air fryer",
+						"Power off my airfryer",
+						"Turn off my air fryer",
+						"Turn off my airfryer",
+						"Turn off air fryer",
+						"Turn off airfryer"
+					]
+				},
+				{
+					"name": "SetCookingTimeIntent",
+					"slots": [
+						{
+							"name": "time",
+							"type": "AMAZON.DURATION",
+							"samples": [
+								"set cooking time to {time}",
+								"set it to {time}",
+								"{time}"
+							]
+						}
+					],
+					"samples": [
+						"set cooking time",
+						"set cooking time to {time}",
+						"set the cooking time to {time}"
+					]
+				},
+				{
+					"name": "SetParametersAndStartCookingIntent",
+					"slots": [
+						{
+							"name": "temperature",
+							"type": "AMAZON.NUMBER",
+							"samples": [
+								"set it to {temperature} degrees",
+								"{temperature} degrees",
+								"cook at {temperature} degrees",
+								"set it to {temperature}",
+								"{temperature}"
+							]
+						},
+						{
+							"name": "time",
+							"type": "AMAZON.DURATION",
+							"samples": ["set it to {time}", "cook it for {time}", "{time}"]
+						}
+					],
+					"samples": [
+						"start cooking at {temperature} for {time}",
+						"cook for {time} at {temperature}",
+						"cook for {time}",
+						"cook at {temperature} degrees",
+						"cook for {time} at {temperature} degrees",
+						"start cooking at {temperature} degrees for {time}",
+						"start cooking for {time} at {temperature}",
+						"start cooking for {time} at {temperature} degrees",
+						"set temperature to {temperature} degrees and start cooking",
+						"set time to {time} and start cooking",
+						"set temperature to {temperature} and start cooking",
+						"set temperature to {temperature} and time to {time} and start cooking",
+						"set temperature to {temperature} degrees and time to {time} and start cooking",
+						"set the temperature to {temperature} degrees and the time to {time} and start cooking"
+					]
+				},
+				{
+					"name": "StartCookingIntent",
+					"slots": [],
+					"samples": ["start cooking", "begin cooking"]
+				},
+				{
+					"name": "SetParametersIntent",
+					"slots": [
+						{
+							"name": "temperature",
+							"type": "AMAZON.NUMBER",
+							"samples": [
+								"{temperature} degrees",
+								"{temperature}",
+								"set it to {temperature}",
+								"set it to {temperature} degrees"
+							]
+						},
+						{
+							"name": "time",
+							"type": "AMAZON.DURATION",
+							"samples": ["set it to {time}", "{time}"]
+						}
+					],
+					"samples": [
+						"set the temperature to {temperature} degrees and cooking time to {time} on the Airfryer",
+						"set airfryer to {temperature} degrees and {time}",
+						"set time to {time} and temperature to {temperature}",
+						"set time to {time} and temperature to {temperature} degrees",
+						"set temperature to {temperature} degrees and time to {time}",
+						"set temperature to {temperature} and time to {time}"
+					]
+				},
+				{
+					"name": "SelectPresetIntent",
+					"slots": [
+						{
+							"name": "preset",
+							"type": "AIRFRYER_PRESET",
+							"samples": ["set it to {preset}", "{preset}", "{preset} preset"]
+						}
+					],
+					"samples": [
+						"start {preset} preset",
+						"select {preset} preset and start cooking",
+						"select {preset} preset",
+						"select the {preset} preset",
+						"select the {preset} preset and start cooking",
+						"set {preset} preset",
+						"set {preset} preset and start cooking",
+						"set the {preset} preset",
+						"set the {preset} preset and start cooking"
+					]
+				},
+				{
+					"name": "IncreaseCookingTimeIntent",
+					"slots": [
+						{
+							"name": "timeDelta",
+							"type": "AMAZON.DURATION",
+							"samples": ["increase it by {timeDelta}", "{timeDelta}"]
+						}
+					],
+					"samples": [
+						"add {timeDelta} to cooking time",
+						"increase cooking time by {timeDelta}",
+						"prolong cooking time by {timeDelta}",
+						"prolong the cooking time by {timeDelta} "
+					]
+				},
+				{
+					"name": "PauseCookingIntent",
+					"slots": [],
+					"samples": ["pause the cooking process", "pause cooking"]
+				},
+				{
+					"name": "ResumeCookingIntent",
+					"slots": [],
+					"samples": [
+						"resume the cooking process",
+						"resume cooking",
+						"continue cooking"
+					]
+				},
+				{
+					"name": "CancelCookingIntent",
+					"slots": [],
+					"samples": [
+						"stop the cooking process",
+						"stop cooking",
+						"cancel cooking",
+						"cancel the cooking process"
+					]
+				},
+				{
+					"name": "StartKeepWarmIntent",
+					"slots": [],
+					"samples": ["start to keep warm", "keep warm", "start keep warm"]
+				},
+				{
+					"name": "IncreaseTemperatureIntent",
+					"slots": [
+						{
+							"name": "temperatureDelta",
+							"type": "AMAZON.NUMBER",
+							"samples": [
+								"{temperatureDelta}",
+								"{temperatureDelta} degrees",
+								"increase it for {temperatureDelta}",
+								"increase it for {temperatureDelta} degrees"
+							]
+						}
+					],
+					"samples": [
+						"increase temperature",
+						"increase the temperature",
+						"increase the temperature for {temperatureDelta}",
+						"increase the temperature for {temperatureDelta} degrees"
+					]
+				},
+				{
+					"name": "DecreaseTemperatureIntent",
+					"slots": [
+						{
+							"name": "temperatureDelta",
+							"type": "AMAZON.NUMBER",
+							"samples": [
+								"decrease it by {temperatureDelta} degrees",
+								"decrease it by {temperatureDelta}",
+								"{temperatureDelta}",
+								"{temperatureDelta} degrees"
+							]
+						}
+					],
+					"samples": [
+						"decrease the temperature",
+						"decrease temperature for {temperatureDelta}",
+						"decrease temperature for {temperatureDelta} degrees",
+						"decrease temperature by {temperatureDelta} degrees",
+						"decrease temperature",
+						"decrease temperature by {temperatureDelta}"
+					]
+				},
+				{
+					"name": "ReportCookingTimeIntent",
+					"slots": [],
+					"samples": [
+						"how much cooking time is left on the airfryer",
+						"how much cooking time is left",
+						"how much time is left for cooking"
+					]
+				},
+				{
+					"name": "ReportTemperatureIntent",
+					"slots": [],
+					"samples": [
+						"what is the selected temperature on the airfryer",
+						"what is the temperature on the airfryer",
+						"what is the airfryer temperature",
+						"what temperature is selected on the airfryer",
+						"what is the currently selected temperature on the airfryer"
+					]
+				},
+				{
+					"name": "ReportCookingRecipeIntent",
+					"slots": [],
+					"samples": [
+						"what recipe is currently cooking",
+						"what recipe is the airfryer cooking"
+					]
+				},
+				{
+					"name": "DecreaseCookingTimeIntent",
+					"slots": [
+						{
+							"name": "timeDelta",
+							"type": "AMAZON.DURATION",
+							"samples": ["decrease it by {timeDelta}", "{timeDelta}"]
+						}
+					],
+					"samples": [
+						"lower the cooking time by {timeDelta}",
+						"decrease the cooking time by {timeDelta}"
+					]
+				}
+			],
+			"types": [
+				{
+					"name": "AIRFRYER_PRESET",
+					"values": [
+						{
+							"id": "KEEP_WARM",
+							"name": {
+								"value": "keep warm"
+							}
+						},
+						{
+							"id": "GRILLED_VEGETABLES",
+							"name": {
+								"value": "vegetables"
+							}
+						},
+						{
+							"id": "MEAT_STEAK",
+							"name": {
+								"value": "steak",
+								"synonyms": ["stakes", "meat chops", "steaks"]
+							}
+						},
+						{
+							"id": "CAKE_MUFFIN",
+							"name": {
+								"value": "cake",
+								"synonyms": ["muffins"]
+							}
+						},
+						{
+							"id": "FISH",
+							"name": {
+								"value": "fish"
+							}
+						},
+						{
+							"id": "CHICKEN_DRUMSTICKS",
+							"name": {
+								"value": "chicken drumsticks"
+							}
+						},
+						{
+							"id": "FRESH_FRIES",
+							"name": {
+								"value": "fresh fries"
+							}
+						},
+						{
+							"id": "FROZEN_SNACKS",
+							"name": {
+								"value": "frozen snacks"
+							}
+						}
+					]
+				}
+			]
+		},
+		"dialog": {
+			"intents": [
+				{
+					"name": "SetTemperatureIntent",
+					"confirmationRequired": false,
+					"prompts": {},
+					"slots": [
+						{
+							"name": "temperature",
+							"type": "AMAZON.NUMBER",
+							"confirmationRequired": false,
+							"elicitationRequired": true,
+							"prompts": {
+								"elicitation": "Elicit.Slot.1282258502094.1137389560573"
+							}
+						}
+					]
+				},
+				{
+					"name": "SetCookingTimeIntent",
+					"confirmationRequired": false,
+					"prompts": {},
+					"slots": [
+						{
+							"name": "time",
+							"type": "AMAZON.DURATION",
+							"confirmationRequired": false,
+							"elicitationRequired": true,
+							"prompts": {
+								"elicitation": "Elicit.Slot.1069134941097.325504351680"
+							}
+						}
+					]
+				},
+				{
+					"name": "SetParametersAndStartCookingIntent",
+					"confirmationRequired": false,
+					"prompts": {},
+					"slots": [
+						{
+							"name": "temperature",
+							"type": "AMAZON.NUMBER",
+							"confirmationRequired": false,
+							"elicitationRequired": true,
+							"prompts": {
+								"elicitation": "Elicit.Slot.1535861527395.551992634711"
+							}
+						},
+						{
+							"name": "time",
+							"type": "AMAZON.DURATION",
+							"confirmationRequired": false,
+							"elicitationRequired": true,
+							"prompts": {
+								"elicitation": "Elicit.Slot.1535861527395.831766880448"
+							}
+						}
+					]
+				},
+				{
+					"name": "SetParametersIntent",
+					"confirmationRequired": false,
+					"prompts": {},
+					"slots": [
+						{
+							"name": "temperature",
+							"type": "AMAZON.NUMBER",
+							"confirmationRequired": false,
+							"elicitationRequired": true,
+							"prompts": {
+								"elicitation": "Elicit.Slot.367937449751.483139328998"
+							}
+						},
+						{
+							"name": "time",
+							"type": "AMAZON.DURATION",
+							"confirmationRequired": false,
+							"elicitationRequired": true,
+							"prompts": {
+								"elicitation": "Elicit.Slot.367937449751.1100120857440"
+							}
+						}
+					]
+				},
+				{
+					"name": "SelectPresetIntent",
+					"confirmationRequired": false,
+					"prompts": {},
+					"slots": [
+						{
+							"name": "preset",
+							"type": "AIRFRYER_PRESET",
+							"confirmationRequired": false,
+							"elicitationRequired": true,
+							"prompts": {
+								"elicitation": "Elicit.Slot.1437757500884.1278425353361"
+							},
+							"validations": [
+								{
+									"type": "hasEntityResolutionMatch",
+									"prompt": "Slot.Validation.1437757500884.1278425353361.1574590566222"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "IncreaseCookingTimeIntent",
+					"confirmationRequired": false,
+					"prompts": {},
+					"slots": [
+						{
+							"name": "timeDelta",
+							"type": "AMAZON.DURATION",
+							"confirmationRequired": false,
+							"elicitationRequired": true,
+							"prompts": {
+								"elicitation": "Elicit.Slot.827254242394.616552564624"
+							}
+						}
+					]
+				},
+				{
+					"name": "CancelCookingIntent",
+					"confirmationRequired": true,
+					"prompts": {
+						"confirmation": "Confirm.Intent.1434573673220"
+					},
+					"slots": []
+				},
+				{
+					"name": "IncreaseTemperatureIntent",
+					"confirmationRequired": false,
+					"prompts": {},
+					"slots": [
+						{
+							"name": "temperatureDelta",
+							"type": "AMAZON.NUMBER",
+							"confirmationRequired": false,
+							"elicitationRequired": true,
+							"prompts": {
+								"elicitation": "Elicit.Slot.318790125252.292906700025"
+							}
+						}
+					]
+				},
+				{
+					"name": "DecreaseTemperatureIntent",
+					"confirmationRequired": false,
+					"prompts": {},
+					"slots": [
+						{
+							"name": "temperatureDelta",
+							"type": "AMAZON.NUMBER",
+							"confirmationRequired": false,
+							"elicitationRequired": true,
+							"prompts": {
+								"elicitation": "Elicit.Slot.674442983789.600915962946"
+							}
+						}
+					]
+				},
+				{
+					"name": "DecreaseCookingTimeIntent",
+					"confirmationRequired": false,
+					"prompts": {},
+					"slots": [
+						{
+							"name": "timeDelta",
+							"type": "AMAZON.DURATION",
+							"confirmationRequired": false,
+							"elicitationRequired": true,
+							"prompts": {
+								"elicitation": "Elicit.Slot.358415052934.688690076067"
+							}
+						}
+					]
+				}
+			],
+			"delegationStrategy": "ALWAYS"
+		},
+		"prompts": [
+			{
+				"id": "Confirm.Intent.629796115211",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "Please make sure your machine environment is safe and all parts are in the right place before starting remote control. Do you want to continue?"
+					}
+				]
+			},
+			{
+				"id": "Confirm.Intent.573187835",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "Remove cups before turning off as machine starts rinsing water. Please confirm to continue?"
+					}
+				]
+			},
+			{
+				"id": "Elicit.Slot.1282258502094.1137389560573",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "What temperature should I set it to?"
+					}
+				]
+			},
+			{
+				"id": "Elicit.Slot.1499921663466.491943929282",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "Which device"
+					}
+				]
+			},
+			{
+				"id": "Elicit.Slot.796075841733.1421375945951",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "Which device"
+					}
+				]
+			},
+			{
+				"id": "Elicit.Slot.1069134941097.325504351680",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "What cooking time do you want me to set?"
+					}
+				]
+			},
+			{
+				"id": "Elicit.Slot.1535861527395.551992634711",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "what temperature do you want me to set it to?"
+					},
+					{
+						"type": "PlainText",
+						"value": "what temperature do you want to cook at?"
+					}
+				]
+			},
+			{
+				"id": "Elicit.Slot.1535861527395.831766880448",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "what cooking time do you want?"
+					},
+					{
+						"type": "PlainText",
+						"value": "how long do you want to cook it?"
+					}
+				]
+			},
+			{
+				"id": "Elicit.Slot.367937449751.483139328998",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "what temperature should I set?"
+					}
+				]
+			},
+			{
+				"id": "Elicit.Slot.367937449751.1100120857440",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "what cooking time do you want?"
+					}
+				]
+			},
+			{
+				"id": "Elicit.Slot.1437757500884.1278425353361",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "Which preset do you want me to start? Possible presets are 'frozen snacks', 'fresh fries', 'chicken drumsticks', 'fish', 'cake', 'steak', 'vegetables' and 'keep warm'."
+					}
+				]
+			},
+			{
+				"id": "Slot.Validation.1437757500884.1278425353361.1574590566222",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "The preset that you want to select does not exist. Possible presets are 'frozen snacks', 'fresh fries', 'chicken drumsticks', 'fish', 'cake', 'steak', 'vegetables' and 'keep warm'. Which one do you want me to start?"
+					}
+				]
+			},
+			{
+				"id": "Elicit.Slot.827254242394.616552564624",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "How much do you want me to increase the cooking time?"
+					}
+				]
+			},
+			{
+				"id": "Confirm.Intent.1434573673220",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "Are you sure you want to stop cooking?"
+					}
+				]
+			},
+			{
+				"id": "Elicit.Slot.318790125252.292906700025",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "How much do you want me to increase the temperature?"
+					}
+				]
+			},
+			{
+				"id": "Elicit.Slot.674442983789.600915962946",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "How much do you want me to decrease the temperature?"
+					}
+				]
+			},
+			{
+				"id": "Elicit.Slot.358415052934.688690076067",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "how much would you like to decrease the cooking time?"
+					}
+				]
+			}
+		]
+	}
+}
