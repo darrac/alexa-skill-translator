@@ -1,3 +1,14 @@
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+ <div id="app">
+    <intent-list v-bind:intents="dialogModel?.interactionModel?.languageModel?.intents"></intent-list>
+  </div>
+<button id="saveAll">Save model</button>
+<input type="file" id="fileInput"> 
+
+
+<div id="intents"></div>
+
+<script src="components/intent/intent.js"></script>
+<script src="components/intent-list/intent-list.js"></script>
 <script src="main.js"></script>
-<div id="jsonFile"></div>
-<input type="file" id="fileInput">
