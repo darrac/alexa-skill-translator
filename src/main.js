@@ -18,13 +18,16 @@ function fileLoaded(fileContent) {
 
 window.onload = function(){
   document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
-  document.getElementById('saveAll').addEventListener('click', () => { saveModel(app.dialogModel)}, false);
 };
 
-function saveModel(model) {
+function saveModel(el) {
+  const model = app.dialogModel;
   console.log(`Saving ${JSON.stringify(model)}`);
-}
+  var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(model));
 
+  el.setAttribute("href", "data:"+data);
+  el.setAttribute("download", "data.json");    
+}
 
 var app = new Vue({
   el: '#app',

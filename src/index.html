@@ -1,14 +1,21 @@
 <link rel="stylesheet" href="styles.css">
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
  <div id="app">
-    <intent-list v-bind:intents="dialogModel?.interactionModel?.languageModel?.intents"></intent-list>
+    <intent-list
+      v-bind:intents="dialogModel?.interactionModel?.languageModel?.intents"
+      v-bind:elicitation-intents="dialogModel?.interactionModel?.dialog?.intents"
+      v-bind:prompts="dialogModel?.interactionModel?.prompts"
+      v-on:remove-intent="onRemoveIntent()"
+    ></intent-list>
+    {{dialogModel?.interactionModel?.dialog?.intents}}
   </div>
-<button id="saveAll">Save model</button>
+<a id="exportJSON" onclick="saveModel(this)">Save model</a>
 <input type="file" id="fileInput"> 
 
 
 <div id="intents"></div>
 
+<script src="components/slots/slots.js"></script>
 <script src="components/intent/intent.js"></script>
 <script src="components/intent-list/intent-list.js"></script>
 <script src="main.js"></script>
