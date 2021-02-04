@@ -5,7 +5,10 @@ Vue.component('app-slot', {
     If a user fails to provide {{appSlot.name}} value, Kitchen plus will ask him to fill that value.
     <div class="slot-elicitation-container" v-if="elicitationSlot?.prompts?.elicitation">
       Kitchen plus will prompt for the slot in one of the following ways:
-      <div v-for="(prompt, promptIndex) in promptsElicitation?.variations">
+      <div
+        v-for="(prompt, promptIndex) in promptsElicitation?.variations"
+        class="input-container"
+      >
         <input class="input-text" type="text" v-model="promptsElicitation.variations[promptIndex].value"></input>
         <button v-on:click="removeSlotElicitation(promptIndex)">-</button>
       </div>
@@ -13,8 +16,11 @@ Vue.component('app-slot', {
     </div>
     After Kitchen Plus prompts, user can fill the {{appSlot.name}} in one of the following ways:
     <div v-if="appSlot?.samples?.length">
-      <div v-for="(sample, index) in appSlot.samples">
-        <input type="text" v-model="appSlot.samples[index]"></input>
+      <div
+        v-for="(sample, index) in appSlot.samples"
+        class="input-container"
+      >
+        <input class="input-text" type="text" v-model="appSlot.samples[index]"></input>
         <button v-on:click="removeSlotSample(promptIndex)">-</button>
       </div>
       <button v-on:click="addSlotSample()">+</button>

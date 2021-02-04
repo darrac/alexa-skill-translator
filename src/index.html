@@ -5,9 +5,20 @@
 <script src="components/intent/intent.js"></script>
 <script src="components/intent-list/intent-list.js"></script>
 <body>
-  <input class="button button--large" type="file" id="fileInput"> 
-  <a class="button button--large" id="exportJSON" onclick="saveModel(this)">Save model</a>
-  <div id="app">
+  <div class="buttons-container">
+    <input type="file" id="file-input" style="display: none;"> 
+    <label
+      class="button button--large"
+      for="file-input"
+      ondrop="onFileDrop(event);"
+      ondragover="dragOverHandler(event);"
+    >
+      Load file
+    </label>
+    <a class="button button--large" id="exportJSON" onclick="saveModel(this)">Save model</a>
+  </div>
+  
+  <div id="app" class="app">
     <intent-list
       v-bind:intents="dialogModel?.interactionModel?.languageModel?.intents"
       v-bind:elicitation-intents="dialogModel?.interactionModel?.dialog?.intents"
