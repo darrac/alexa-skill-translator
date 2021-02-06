@@ -1,28 +1,26 @@
 body {
-  background-color: #0b132b;
-  color: #ffffff;
-}
-
-.app {
-  background-color: #0b132b;
-  color: #ffffff;
+  margin: 0;
 }
 
 .intent {
   padding: 8px 8px;
-}
-
-.intent:nth-child(even) {
-  background-color: #1c2541;
+  border-bottom: solid;
+  border-width: 1px;
 }
 
 .intent:nth-child(odd) {
-  background-color: #3a506b;
+  background-color: #FAFAFA;
+}
+
+.intent-title {
+  color: #457B9D;
 }
 
 .buttons-container {
   width: 100%;
+  background-color: 324766;
   display: flex;
+  padding: 6px;
 }
 
 .buttons-container > * + * {
@@ -31,11 +29,27 @@ body {
 
 .button {
   cursor: pointer;
-  background: #5bc0be;
+  background: #457B9D;
   border-radius: 6px;
-  border: 2px solid #ffffff;
+  border: 2px solid;
+  border-color: white;
   font-size: 16px;
   font-family: arial;
+  color: white;
+}
+
+.button--inverted {
+  background: #ffffff;
+  border-radius: 6px;
+  border-color: #457B9D;
+  color: #457B9D;
+  
+}
+
+.button--small {
+  width: 30px;
+  height: 30px;
+  font-size: 22px;
 }
 
 .button--large {
@@ -52,8 +66,17 @@ body {
  
 .input-container {
   display: flex;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  padding: 4px;
 }
 
 .input-container > input {
   flex-grow: 1;
+
+  padding: 6px 6px;
+  border-radius: 4px;
+  border: none;
 }

@@ -1,16 +1,16 @@
 Vue.component('intent', {
   template: `
   <div class="intent">
-    <h2>{{ intent.name }}</h2>
+    <h2 class="intent-title">{{ intent.name }}</h2>
     <div>User can invoke this Intent by saying:</div>
     <div
       v-for="(utterance, index) in intent.samples"
       class="input-container"
     >
       <input class="input-text" type="text" rows="5" v-model="intent.samples[index]"></input>
-      <button v-on:click="removeSample(index)">-</button>
+      <button class="button button--inverted button--small" v-on:click="removeSample(index)">-</button>
     </div>
-    <button v-on:click="addSample()">+</button>
+    <button class="button button--inverted button--small" v-on:click="addSample()">+</button>
 
     <div v-if="intent?.slots?.length">
       <slots
