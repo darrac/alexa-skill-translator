@@ -23,6 +23,7 @@
       v-bind:intents="dialogModel?.interactionModel?.languageModel?.intents"
       v-bind:elicitation-intents="dialogModel?.interactionModel?.dialog?.intents"
       v-bind:prompts="dialogModel?.interactionModel?.prompts"
+      v-bind:types="dialogModel?.interactionModel?.languageModel?.types"
       v-on:remove-intent="onRemoveIntent()"
     ></intent-list>
   </div>  

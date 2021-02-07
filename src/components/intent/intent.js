@@ -17,10 +17,11 @@ Vue.component('intent', {
         v-bind:slots="intent?.slots"
         v-bind:elicitation-slots="elicitationIntent?.slots"
         v-bind:prompts="prompts"
+        v-bind:types="types"
       ></slots>
     </div>
   </div>`,
-  props: ['intent', 'elicitation-intent', 'prompts'],
+  props: ['intent', 'elicitation-intent', 'prompts', 'types'],
   data: function() {
     return {
       samples: this.intent.samples

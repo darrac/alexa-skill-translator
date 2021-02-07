@@ -7,10 +7,11 @@ Vue.component('slots', {
         v-bind:app-slot="slot"
         v-bind:elicitation-slot="getElicitationSlot(slot.name)"
         v-bind:prompts-elicitation="getPromptsElicitation(getElicitationSlot(slot.name)?.prompts?.elicitation)"
-      ></app-slot>     
+        v-bind:types="types"
+      ></app-slot>
     </div>
   </div>`,
-  props: ['slots', 'elicitation-slots', 'prompts'],
+  props: ['slots', 'elicitation-slots', 'prompts', 'types'],
   methods: {
     addSample: function() {
       this.samples.push('');

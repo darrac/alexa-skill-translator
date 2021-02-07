@@ -10,9 +10,9 @@ Vue.component('app-slot', {
         class="input-container"
       >
         <input class="input-text" type="text" v-model="promptsElicitation.variations[promptIndex].value"></input>
-        <button v-on:click="removeSlotElicitation(promptIndex)">-</button>
+        <button class="button button--inverted button--small" v-on:click="removeSlotElicitation(promptIndex)">-</button>
       </div>
-      <button v-on:click="addSlotElicitation()">+</button>
+      <button class="button button--inverted button--small" v-on:click="addSlotElicitation()">+</button>
     </div>
     After Kitchen Plus prompts, user can fill the {{appSlot.name}} in one of the following ways:
     <div v-if="appSlot?.samples?.length">
@@ -21,12 +21,41 @@ Vue.component('app-slot', {
         class="input-container"
       >
         <input class="input-text" type="text" v-model="appSlot.samples[index]"></input>
-        <button v-on:click="removeSlotSample(promptIndex)">-</button>
+        <button class="button button--inverted button--small" v-on:click="removeSlotSample(index)">-</button>
       </div>
-      <button v-on:click="addSlotSample()">+</button>
+      <button class="button button--inverted button--small" v-on:click="addSlotSample()">+</button>
+    </div>
+    <div v-if="slotType">
+    Slot {{appSlot.name}} is of custom type <b>{{appSlot.type}}</b>.
+    <br>
+    <i>Note: Changing custom type values here can affect other intents where {{appSlot.type}} type is used.</i>
+    <br>
+    Possible values are:
+      <div v-for="typeValue in slotType.values">
+        <b>{{typeValue.id}}</b> - Users can pronounce this value in any of the following ways:
+        <div class="input-container">
+          <input class="input-text" type="text" v-model="typeValue.name.value"></input>
+        </div>
+        <div
+          v-for="(synonym, synonymIndex) in typeValue.name.synonyms"
+          class="input-container"
+        >
+          <input class="input-text" type="text" v-model="typeValue.name.synonyms[synonymIndex]"></input>
+          <button class="button button--inverted button--small" v-on:click="removeSynonym(typeValue, synonymIndex)">-</button>
+        </div>
+        <button class="button button--inverted button--small" v-on:click="addSynonym(typeValue)">+</button>
+      </div>
     </div>
   </div>`,
-  props: ['app-slot', 'elicitation-slot', 'prompts-elicitation'],
+  props: ['app-slot', 'elicitation-slot', 'prompts-elicitation', 'types'],
+  data() {
+    return {
+      slotType: null
+    }
+  },
+  created() {
+    this.slotType = this.getCustomSlotType(this.appSlot.type);
+  },
   methods: {
     addSlotElicitation: function() {
       this.promptsElicitation.variations.push({
@@ -42,6 +71,24 @@ Vue.component('app-slot', {
     },
     removeSlotSample: function(index) {
       this.appSlot.samples.splice(index, 1);
+    },
+    addSynonym: function(typeValue) {
+      if (typeValue.name.synonyms === undefined) {
+        Vue.set(typeValue.name, 'synonyms', []);
+      }
+      typeValue.name.synonyms.push('');
+    },
+    removeSynonym: function(typeValue, index) {
+      typeValue.name.synonyms.splice(index, 1);
+      if (typeValue.name.synonyms.length === 0) {
+        Vue.delete(typeValue.name, 'synonyms');
+      }
+    },
+    getCustomSlotType: function(slotTypeName) {
+      const type = this.types.find((type) => {
+        return type.name === slotTypeName;
+      });
+      return type;
     }
   }
 });
