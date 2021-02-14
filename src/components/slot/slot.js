@@ -14,6 +14,23 @@ Vue.component('app-slot', {
       </div>
       <button class="button button--inverted button--small" v-on:click="addSlotElicitation()">+</button>
     </div>
+    <div v-if="validationsPrompts?.length">
+      Alexa will validate this slot value with the following validations:
+      <div v-for="validation in validationsPrompts">
+        <i>{{validation.id}}</i>
+        <br/>
+        For this validation Alexa will prompt new value from the user in one of the following ways:
+        <br/>
+        <div
+          v-for="(validationPrompt, validationPromptIndex) in validation?.variations"
+          class="input-container"
+        >
+          <input class="input-text" type="text" v-model="validation.variations[validationPromptIndex].value"></input>
+          <button class="button button--inverted button--small" v-on:click="removeValidationPrompt(validation, validationPromptIndex)">-</button>
+        </div>
+        <button class="button button--inverted button--small" v-on:click="addValidationPrompt(validation)">+</button>
+      </div>
+    </div>
     After Kitchen Plus prompts, user can fill the {{appSlot.name}} in one of the following ways:
     <div v-if="appSlot?.samples?.length">
       <div
@@ -26,11 +43,11 @@ Vue.component('app-slot', {
       <button class="button button--inverted button--small" v-on:click="addSlotSample()">+</button>
     </div>
     <div v-if="slotType">
-    Slot {{appSlot.name}} is of custom type <b>{{appSlot.type}}</b>.
-    <br>
-    <i>Note: Changing custom type values here can affect other intents where {{appSlot.type}} type is used.</i>
-    <br>
-    Possible values are:
+      Slot {{appSlot.name}} is of custom type <b>{{appSlot.type}}</b>.
+      <br>
+      <i>Note: Changing custom type values here can affect other intents where {{appSlot.type}} type is used.</i>
+      <br>
+      Possible values are:
       <div v-for="typeValue in slotType.values">
         <b>{{typeValue.id}}</b> - Users can pronounce this value in any of the following ways:
         <div class="input-container">
@@ -47,7 +64,7 @@ Vue.component('app-slot', {
       </div>
     </div>
   </div>`,
-  props: ['app-slot', 'elicitation-slot', 'prompts-elicitation', 'types'],
+  props: ['app-slot', 'elicitation-slot', 'prompts-elicitation', 'types',  'validations-prompts'],
   data() {
     return {
       slotType: null
@@ -65,6 +82,15 @@ Vue.component('app-slot', {
     },
     removeSlotElicitation: function(index) {
       this.promptsElicitation.variations.splice(index, 1);
+    },
+    addValidationPrompt: function(validations) {
+      validations.variations.push({
+        type: 'PlainText',
+        value: ''
+      });
+    },
+    removeValidationPrompt: function(validation, index) {
+      validation.variations.splice(index, 1);
     },
     addSlotSample: function() {
       this.appSlot.push('');

@@ -6,9 +6,11 @@ Vue.component('slots', {
       <app-slot
         v-bind:app-slot="slot"
         v-bind:elicitation-slot="getElicitationSlot(slot.name)"
-        v-bind:prompts-elicitation="getPromptsElicitation(getElicitationSlot(slot.name)?.prompts?.elicitation)"
+        v-bind:prompts-elicitation="getPrompt(getElicitationSlot(slot.name)?.prompts?.elicitation)"
+        v-bind:validations-prompts="getPromptsValidations(getElicitationSlot(slot.name)?.validations)"
         v-bind:types="types"
-      ></app-slot>
+      >
+      </app-slot>
     </div>
   </div>`,
   props: ['slots', 'elicitation-slots', 'prompts', 'types'],
@@ -25,11 +27,17 @@ Vue.component('slots', {
       });
       return elicitationSlot;
     },
-    getPromptsElicitation: function(elicitationId) {
-      const elicitation = this.prompts?.find((prompt) => {
+    getPrompt: function(elicitationId) {
+      const elicitationPrompt = this.prompts?.find((prompt) => {
         return prompt.id === elicitationId;
       });
-      return elicitation;
+      return elicitationPrompt;
+    },
+    getPromptsValidations: function(slotValidations) {
+      console.log(JSON.stringify(slotValidations));
+      return slotValidations?.map((validation) => {
+        return this.getPrompt(validation.prompt);
+      });
     }
   }
 });
