@@ -93,7 +93,7 @@ Vue.component('app-slot', {
       validation.variations.splice(index, 1);
     },
     addSlotSample: function() {
-      this.appSlot.push('');
+      this.appSlot.samples.push('');
     },
     removeSlotSample: function(index) {
       this.appSlot.samples.splice(index, 1);
